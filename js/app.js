@@ -67,6 +67,8 @@ document.addEventListener("keyup",function(even){
     }
 })
 
+/*
+
 //complete to do
 function completeToDo(element){
     element.classList.toggle(CHECK)
@@ -76,6 +78,7 @@ function completeToDo(element){
     LIST[element.id].done = LIST[element.id].done ? false : true
 
 }
+
 
 //remove to do
 function removeToDo(element){
@@ -95,4 +98,34 @@ list.addEventListener("click", function(event){
         removeToDo(element)
     }
 
+})
+*/
+
+// complete to do
+function completeToDo(element){
+    element.classList.toggle(CHECK);
+    element.classList.toggle(UNCHECK);
+    element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+    
+    LIST[element.id].done = LIST[element.id].done ? false : true;
+}
+
+// remove to do
+function removeToDo(element){
+    element.parentNode.parentNode.removeChild(element.parentNode);
+    
+    LIST[element.id].trash = true;
+}
+
+// target the items created dynamically
+
+list.addEventListener("click", function(event){
+    const element = event.target; // return the clicked element inside list
+    const elementJob = element.attributes.job.value; // complete or delete
+    
+    if(elementJob == "complete"){
+        completeToDo(element);
+    }else if(elementJob == "delete"){
+        removeToDo(element);
+    }
 })
