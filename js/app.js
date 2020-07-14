@@ -14,12 +14,12 @@ const LINE_THROUGH = "lineThrough"
 let LIST, id
 
 //get item from localstorage
-let data = localStorage.getItem("TUDO");
+let data = localStorage.getItem("TODO");
 
 //check if data s not empty
 if (data){
     LIST = JSON.parse(data);
-    id = LIST.lenght; // set the id to the last one in the list
+    id = LIST.length; // set the id to the last one in the list
     loadList(LIST); //load the list to the user interface
 
 }else{
@@ -85,7 +85,7 @@ document.addEventListener("keyup",function(even){
                 name : toDo,
                 id : id,
                 done : false,
-                trash : false,
+                trash : false
             });
 
             //add item to localstorage (this code must be added where the LIST array is updated)
